@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-ss
+ss淡淡地说
   </div>
 </template>
 
