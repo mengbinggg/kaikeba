@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-ss淡淡地说dad
+    <router-link to='/foo'>foo</router-link>
+    <router-link to='/boo'>boo</router-link>
+
+    <router-view></router-view>
   </div>
 </template>
 
