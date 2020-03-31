@@ -1,16 +1,23 @@
 <template>
   <div id="app">
-    <div>count: {{count}}</div>
+    <!-- 使用vuex测试代码 -->
+    <!-- <div>count: {{count}}</div>
     <div>getCount: {{getCount}}</div>
     <div>
       <button @click="addCount">count值加</button>
       <button @click="reduceCount">count值减</button>
+    </div> -->
+
+    <div>count: {{$store.state.count}}</div>
+    <div>getCount: {{$store.getters.getCount}}</div>
+    <div>
+      <button @click="addCount">count值加</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from 'vuex';
+// import { mapState, mapGetters, mapActions } from 'vuex';
 export default {
   name: 'app',
   data () {
@@ -19,19 +26,25 @@ export default {
     }
   },
   computed: {
-    ...mapState(['count']),
-    ...mapGetters(['getCount'])
+    // ...mapState(['count']),
+    // ...mapGetters(['getCount'])
   },
   methods: {
-    ...mapActions(['addFun', 'reduceFun']),
+    // 使用vuex测试代码
+    // ...mapActions(['addFun', 'reduceFun']),
+    // addCount() {
+    //   // this.$store.commit("add");
+    //   // this.$store.dispatch("addFun", 2);
+    //   this.addFun(2);
+    // },
+    // reduceCount() {
+    //   // this.$store.commit("reduce");
+    //   this.$store.dispatch("reduceFun", 2);
+    // }
+
     addCount() {
-      // this.$store.commit("add");
-      // this.$store.dispatch("addFun", 2);
-      this.addFun(2);
-    },
-    reduceCount() {
-      // this.$store.commit("reduce");
-      this.$store.dispatch("reduceFun", 2);
+      // this.$store.commit("add", 3);
+      this.$store.dispatch("addFun", 2);
     }
   },
 }
