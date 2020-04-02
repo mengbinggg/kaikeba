@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手写vue源码</title>
+</head>
+<body>
+    <div id="app">
+        <p>名字：<span>{{name}}</span></p>
+        <div>
+            <p>爱好：</p>
+            <ul>
+                <li>食物：<span>{{like.food}}</span></li>
+                <li>书籍：《<span>{{like.book}}</span>》</li>
+            </ul>
+        </div>
+        <p>大家好，我的名字叫<span m-text="name"></span>，我喜欢的书籍是《<span m-text="like.book"></span>》。</p>
+        <p m-html="html"></p>
+        <p>修改名字：<input type="text" m-model="name"></p>
+        <p>修改我喜欢的食物：<input type="text" m-model="like.food"></p>
+        <p>修改动态文本元素：<input type="text" m-model="html" style="width: 400px;"></p>
+        <button @click="updateName">修改名字为：小明明</button>
+    </div>
+    <script src="./MVue.js"></script>
+    <script src="./Compile.js"></script>
+    <script>
+        const app = new MVue({
+            el: "#app",
+            data: {
+                name: "张三",
+                like: {
+                    food: '苹果',
+                    book: '三毛流浪记'
+                },
+                html: "<span>我是动态新增的文件元素</span>"
+            },
+            created() {
+                this.name = "李四";
+                this.like.food = "香蕉";
+            },
+            methods: {
+                updateName() {
+                    this.name = "小明明";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
