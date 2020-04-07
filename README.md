@@ -4,3 +4,4 @@
 3. day02：手写VueRouter
 4. day03：手写Vuex
 5. day04：手写Vue（实现vue中双向数据绑定、事件监听、created钩子函数、m-text、m-model、m-html）
+6. day05：svg图标使用、vue权限控制

@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    s
+    <svg-icon className="qq" @click="clickIcon"></svg-icon>
+    <svg-icon className="weixin"></svg-icon>
   </div>
 </template>
 
@@ -10,7 +11,12 @@ export default {
   name: 'App',
   components: {
 
-  }
+  },
+  methods: {
+    clickIcon() {
+      console.log("图标点击了")
+    }
+  },
 }
 </script>
 
