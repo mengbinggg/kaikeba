@@ -2,7 +2,6 @@
     <div class="page-wrapper">
         <side-bar class="page-sideBar"></side-bar>
         <div class="page-content">
-            <bread-crumb></bread-crumb>
             <router-view></router-view>
         </div>
     </div>
@@ -10,11 +9,22 @@
 
 <script>
     import sideBar from '@/components/sideBar';
-    import breadCrumb from '@/components/breadCrumb';
     export default {
         components: {
-            sideBar,
-            breadCrumb
+            sideBar
         }
     }
 </script>
+<style scoped>
+.page-wrapper {
+    display: flex;
+    height: 100%;
+    margin: 20px;
+}
+.page-sideBar {
+    width: 300px;
+}
+.page-content {
+    flex: 1;
+}
+</style>

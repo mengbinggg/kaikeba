@@ -11,11 +11,8 @@ export default new Vuex.Store({
         user
     },
     getters: {
-        roles: state => {
-            return state.user.roles;
-        },
-        token: state => {
-            return state.user.token;
-        },
+        roles: state => state.user.roles,
+        token: state => state.user.token,
+        routes: state => state.permission.routes
     }
 })

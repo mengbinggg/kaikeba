@@ -7,6 +7,7 @@ function resolve(dir) {
 
 module.exports = {
     publicPath: './',
+    assetsDir: '.',
     devServer: {
         port: 8081
     },

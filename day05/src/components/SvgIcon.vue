@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="svg-icon-box">
         <svg aria-hidden="true" v-on="$listeners" :class="svgClass">
             <use :xlink:href="svgName"></use>
         </svg>
@@ -29,6 +29,9 @@
 </script>
 
 <style scoped>
+.svg-icon-box {
+    display: inline-block;
+}
 .svg-icon {
     width: 1em;
     height: 1em;

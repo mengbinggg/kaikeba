@@ -28,10 +28,12 @@ router.beforeEach(async(to, from, next) => {
                 try{
                     // 先获取用户角色信息
                     const roles = await store.dispatch('user/getUserInfo');
-                    // 在获取权限信息
+                    // 再根据角色生成权限路由
                     const accessedRoutes = await store.dispatch('permission/generateRoutes', roles);
 
                     router.addRoutes(accessedRoutes);
+
+                    // replace: true，不会向history中添加新的路由信息，直接替换当前路由
                     next({ ...to, replace: true });
                 }catch (error) {
                     await store.dispatch('user/logout');

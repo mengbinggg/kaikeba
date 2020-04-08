@@ -35,7 +35,7 @@ function filterPermissionRoutes(routes, roles) {
     routes.forEach(route => {
         if(hasPermission(route, roles)) {
             if(route.children && route.children.length > 0) {
-                filterPermissionRoutes(route.children, roles);
+                route.children = filterPermissionRoutes(route.children, roles);
             }
             accessedRoutes.push(route);
         }
