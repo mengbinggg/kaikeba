@@ -1,4 +1,5 @@
 import * as auth from '../../utils/auth';
+// import { login, getUserInfo } from '@/api/user'
 
 const state = {
     roles: [],
@@ -17,8 +18,8 @@ const mutations = {
 const actions = {
     // 登录
     login({ commit }, userInfo) {
+        // 模拟后台数据处理
         const { username, password } = userInfo;
-
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 if((username == 'mengbing' && password == '123') || (username == 'tom' && password == '123')) {
@@ -30,6 +31,15 @@ const actions = {
                 }
             }, 1000);
         });
+
+        // 获取mock数据
+        // return login(userInfo).then(res => {
+        //     console.log(res)
+        //     console.log(getUserInfo)
+        //     console.log(commit)
+        // }, err => {
+        //     return Promise.reject(err);
+        // });
     },
     // 获取用户信息（获取用户角色）
     getUserInfo({ commit, state }) {
