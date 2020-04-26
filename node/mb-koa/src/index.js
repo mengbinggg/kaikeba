@@ -1,3 +1,4 @@
+const path = require('path');
 const MKoa = require('./MKoa');
 const app = new MKoa();
 
@@ -28,19 +29,21 @@ const app = new MKoa();
 //     ctx.body += '4';
 // });
 
+
 // 路由中间件
-const Router = require('./router');
-const router = new Router();
+// const Router = require('./router');
+// const router = new Router();
 
-router.get('/index', ctx => ctx.body = 'this is index page');
-router.post('/user', ctx => {
-    ctx.body = {
-        name: 'Tom',
-        age: 23
-    };
-});
+// router.get('/index', ctx => ctx.body = 'this is index page');
+// router.post('/user', ctx => { ctx.body = '查询成功'; });
 
-app.use(router.routes());
+// app.use(router.routes());
+
+
+// 静态文件中间件
+const MKoaStatic = require('./MKoaStatic');
+app.use(MKoaStatic('/static'));
+
 
 app.listen(3000, () => {
     console.log('project running...');

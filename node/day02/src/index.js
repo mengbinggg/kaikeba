@@ -20,8 +20,8 @@ const app = new Koa();
 // });
 
 // // 静态资源中间件
-// const KoaStatic = require('koa-static');
-// app.use(KoaStatic(path.join(__dirname, './')));
+const KoaStatic = require('koa-static');
+app.use(KoaStatic(path.join(__dirname, './')));
 
 // 路由koa-router
 // const koaRouter = require('koa-router')();

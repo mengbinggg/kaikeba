@@ -53,7 +53,8 @@ const server = http.createServer((req, res) => {
     // res.end('hello world');
     const { url, method, headers } = req;
     if(url === '/' && method === 'GET') {
-        fs.readFile('index.html', (err, data) => {
+        fs.readFile(path.resolve(__dirname, './index.html'), (err, data) => {
+            console.log(err, data)
             if(err) {
                 res.writeHead(500, {
                     'Content-Type': 'text/plain;charset=utf-8'
@@ -70,11 +71,11 @@ const server = http.createServer((req, res) => {
         res.setHeader('Content-Type', 'application/json');
         res.end(JSON.stringify({ name: 'Tom', age: 24 }));
     }else if(headers.accept.indexOf('image/*') != -1 && method === 'GET') {
-        fs.createReadStream('.' + url).pipe(res);
+        fs.createReadStream(path.resolve(__dirname, './' + url)).pipe(res);
     }else {
         res.statusCode = 404;
         res.setHeader('Content-Type', 'text/plain;charset=utf-8');
         res.end('页面不存在');
     }
 });
-server.listen(8080);
+server.listen(3000);
