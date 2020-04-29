@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+
+<body>
+    <div id="app">
+        <el-input placeholder='请输入名称搜索' v-model='keyword' class="input-with-select">
+            <el-button slot="append" icon="el-icon-search" @click='findByKeyword'></el-button>
+        </el-input>
+        <el-radio-group v-model="category" style="margin: 20px 0;" @change='findByCategory'>
+            <el-radio-button label="蔬菜"></el-radio-button>
+            <el-radio-button label="水果"></el-radio-button>
+        </el-radio-group>
+        <el-table :data="tableData" height="550" style="width: 100%">
+            <el-table-column prop="name" label="名称" width="200">
+            </el-table-column>
+            <el-table-column prop="price" label="价格" width="200">
+            </el-table-column>
+            <el-table-column prop="category" label="分类">
+            </el-table-column>
+        </el-table>
+        <el-pagination layout="prev, pager, next" :current-page="page" :total="total" @current-change="turnPage"></el-pagination>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app',
+        data() {
+            return {
+                keyword: '',
+                tableData: [],
+                category: '水果',
+                page: 1,
+                total: 0
+            }
+        },
+        created() {
+            this.getFruitList();
+        },
+        methods: {
+            async getFruitList() {
+                var list = await axios.get(`/api/fruits?page=${this.page}&category=${this.category}&keyword=${this.keyword}`);
+                this.tableData = list.data.data.list;
+                this.total = list.data.data.total;
+            },
+            async turnPage(page) {
+                this.page = page;
+                this.getFruitList();
+            },
+            async findByKeyword() {
+                this.getFruitList();
+            },
+            async findByCategory(category) {
+                console.log(category)
+                this.category = category;
+                this.page = 1;
+                this.getFruitList();
+            }
+        }
+    });
+</script>
+
+</html>

@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+
 const app = http.createServer((req, res) => {
     const { url, method } = req;
     if(url === '/' && method === 'GET') {
@@ -24,6 +25,14 @@ const app = http.createServer((req, res) => {
         //     'Access-Control-Allow-Headers': 'X-Token, Content-Type'
         // });
         // res.end();
+    }else if(url === '/user' && method === 'POST') {
+        let resData = [];
+        req.on('data', data => {
+            resData.push(data);
+        });
+        req.on('end', () => {
+            res.end(resData.toString());
+        })
     }
 });
 
