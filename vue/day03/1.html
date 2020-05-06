@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <script type="text/javascript">
+        // var nodes = document.getElementsByTagName("div");
+        // for (var i = 0; i < nodes.length; i++) {
+        //     console.log(nodes[i])
+        //     nodes[i].addEventListener('click', function () {
+        //         alert(i);
+        //     }) 
+        // }
+
+        // var nodes = document.getElementsByTagName("div");
+        // for (var i = 0; i < nodes.length; i++) {
+        //     console.log(nodes[i])
+        //     nodes[i].onclick = function () {
+        //         alert(i);
+        //     }
+        // }
+
+        // var nodes = document.getElementsByTagName("div");
+        // for (var i = 0; i < nodes.length; i++) {
+        //     console.log(nodes[i])
+        //     nodes[i].onclick = function () {
+        //         alert(i);
+        //     }
+        // }
+
+        // var node = document.getElementsByTagName("div")[0];
+        // node.addEventListener('click', function() {
+        //     console.log(111)
+        // })
+
+        // var node = document.getElementsByTagName("div")[0];
+        // node.onclick = function() {
+        //     console.log(111)
+        // };
+
+        // function add(x) {
+        //     return function(y) {
+        //         return function(z) {
+        //             return x + y + z;
+        //         }
+        //     }
+        // }
+        // console.log(add(1))
+        // console.log(add(1)(2))
+        // console.log(add(1)(2)(3))
+
+        function showName() {
+            console.log(this.name);
+        }
+        var a = {
+            name: '11'
+        }
+        // showName.bind(a)();
+        // showName.call(a);
+        Function.prototype.bind = (cxt) => {
+            console.log(this)
+        }
+
+        showName.bind(a)
+    </script>
+</body>
+
+</html>

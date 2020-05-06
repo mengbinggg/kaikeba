@@ -32,20 +32,20 @@ const path = require('path');
 // });
 
 // 5. 缓冲器
-// const buf1 = Buffer.alloc(10);
-// console.log(buf1, buf1.toString());
+const buf1 = Buffer.alloc(10);
+console.log(buf1, buf1.toString());
 
-// const buf2 = Buffer.from('a');
-// console.log(buf2, buf2.toString());
+const buf2 = Buffer.from('a');
+console.log(buf2, buf2.toString());
 
-// const buf3 = Buffer.from('中');
-// console.log(buf3, buf3.toString());
+const buf3 = Buffer.from('中');
+console.log(buf3, buf3.toString());
 
-// buf3.write('国');
-// console.log(buf3, buf3.toString());
+buf3.write('国');
+console.log(buf3, buf3.toString());
 
-// const buf4 = Buffer.concat([buf2, buf3]);
-// console.log(buf4, buf4.toString());
+const buf4 = Buffer.concat([buf2, buf3]);
+console.log(buf4, buf4.toString());
 
 // 6. HTTP
 const http = require('http');
