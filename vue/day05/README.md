@@ -12,11 +12,15 @@ vue inspect --rules
 vue inspect --rule svg
 ```
 
-### svg图标使用
+### vue中svg图标的使用
 ```
 # 用于跳过智能设备的识别（残障人士的智能设备，会自动识别内容并播放），避免残障人士混淆
 aria-hidden = "true"
 ```
+1. webpack中配置vue解析svg的规则
+2. main.js中引入svg文件
+3. 新增svg全局组件（组件中通过use引用svg文件）
+4. 在任何组件中都可以使用该svg组件
 
 ### 权限控制思路
 > 根据角色判断用户是否有权限访问页面

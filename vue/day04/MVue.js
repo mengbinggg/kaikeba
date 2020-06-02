@@ -30,17 +30,17 @@ class MVue {
     defineReactive(obj, key, val) {
         this.observe(val);  // 循环遍历data中的对象元素
 
-        var sub = new Subject();
+        var dep = new Dep();
 
         Object.defineProperty(obj, key, {
             get: () => {
-                Subject.observer && sub.addObserve(Subject.observer);
+                dep.observer && dep.addObserve(Dep.observer);
                 return val;
             },
             set: (newVal) => {
                 if(newVal !== val) {
                     val = newVal;
-                    sub.notify();
+                    dep.notify();
                 }
             }
         });
@@ -63,8 +63,8 @@ class MVue {
     }
 }
 
-// 定义被观察者对象(目标对象)
-class Subject {
+// 定义一个订阅器（用于管理订阅者对象）
+class Dep {
     constructor() {
         this.observes = [];
     }
@@ -80,20 +80,20 @@ class Subject {
     }
 }
 
-// 定义观察者对象
+// 定义订阅者对象
 class Observe {
     constructor(vm, key, callback) {
         this.vm = vm;
         this.key = key;
         this.callback = callback;
 
-        // 将观察者绑定到目标对象
-        Subject.observer = this;
+        // 将订阅者绑定到目标对象
+        Dep.observer = this;
         let data = vm.$data;
         key.split(".").forEach(item => {
             data = data[item];
         })
-        Subject.observer = null;
+        Dep.observer = null;
     }
 
     update() {

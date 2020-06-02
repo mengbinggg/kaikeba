@@ -5,7 +5,7 @@
 3. day02: koa基本操作
 4. mb-koa: 手写koa源码
 
-5. day03: 网络编程
+5. day03: 网络编程(跨域)
 6. day04: node实现数据持久化 - mysql
 7. day05: node实现数据持久化 - mongodb
 
