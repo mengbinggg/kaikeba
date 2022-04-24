@@ -34,7 +34,7 @@ class MVue {
 
         Object.defineProperty(obj, key, {
             get: () => {
-                dep.observer && dep.addObserve(Dep.observer);
+                Dep.observer && dep.addObserve(Dep.observer);
                 return val;
             },
             set: (newVal) => {
